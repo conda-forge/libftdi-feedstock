@@ -3,7 +3,7 @@
 @@ -1,5 +1,5 @@
  # Project
 -project(libftdi1 C)
-+project(libftdi1 CXX)
++project(libftdi1 C CXX)
  set(MAJOR_VERSION 1)
  set(MINOR_VERSION 5)
  set(PACKAGE libftdi1)
