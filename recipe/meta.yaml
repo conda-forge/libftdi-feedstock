@@ -33,8 +33,8 @@ test:
     - test -f ${PREFIX}/lib/pkgconfig/libftdi1.pc                # [unix]
     - test -f ${PREFIX}/lib/cmake/libftdi1/LibFTDI1Config.cmake  # [unix]
     - if not exist %LIBRARY_INC%\libftdi1\ftdi.h (exit 1)        # [win]
-    # - if not exist %LIBRARY_LIB%\libftdi1.lib (exit 1)           # [win]
-    - if not exist %LIBRARY_BIN%\libftdi1.dll (exit 1)           # [win]
+    - if not exist %LIBRARY_LIB%\ftdi1.lib (exit 1)           # [win]
+    - if not exist %LIBRARY_BIN%\ftdi1.dll (exit 1)           # [win]
 
 about:
   home: https://www.intra2net.com/en/developer/libftdi/
