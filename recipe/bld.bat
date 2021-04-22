@@ -2,6 +2,9 @@
 set CC=cl.exe
 set CXX=cl.exe
 
+:: set pkg-config path so that host deps can be found
+set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig;%LIBRARY_PREFIX%\share\pkgconfig;%BUILD_PREFIX%\Library\lib\pkgconfig"
+
 mkdir build
 cd build
 
