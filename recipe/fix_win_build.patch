@@ -1,5 +1,12 @@
 --- a/CMakeLists.txt	2020-07-08 05:32:55.000000000 +1000
 +++ b/CMakeLists.txt	2021-04-23 07:08:34.377667330 +1000
+@@ -1,5 +1,5 @@
+ # Project
+-project(libftdi1 C)
++project(libftdi1 CXX)
+ set(MAJOR_VERSION 1)
+ set(MINOR_VERSION 5)
+ set(PACKAGE libftdi1)
 @@ -12,8 +12,8 @@
     set(CMAKE_BUILD_TYPE     RelWithDebInfo)
  endif("${CMAKE_BUILD_TYPE}" STREQUAL "")
