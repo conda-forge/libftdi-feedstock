@@ -15,6 +15,7 @@ cmake ^
     -DFTDI_EEPROM=OFF ^
     -DSTATICLIBS=OFF ^
     -DEXAMPLES=OFF ^
+    -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=TRUE ^
     %SRC_DIR%
 if errorlevel 1 exit 1
 
