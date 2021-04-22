@@ -1,15 +1,17 @@
 --- a/CMakeLists.txt	2020-07-08 05:32:55.000000000 +1000
 +++ b/CMakeLists.txt	2021-04-22 17:14:15.752288872 +1000
-@@ -25,7 +25,11 @@
+@@ -25,8 +25,12 @@
  endif(${CMAKE_BUILD_TYPE} STREQUAL Debug)
  
  # find libusb
 -find_package ( USB1 REQUIRED )
+-include_directories ( ${LIBUSB_INCLUDE_DIR} )
 +
 +
 +find_package(PkgConfig)
 +pkg_check_modules(LIBUSB libusb-1.0)
 +
- include_directories ( ${LIBUSB_INCLUDE_DIR} )
++include_directories ( ${LIBUSB_INCLUDE_DIRS} )
  
  # Find Boost
+ if (FTDIPP OR BUILD_TESTS)
