@@ -1,0 +1,34 @@
+--- a/CMakeLists.txt	2020-07-08 05:32:55.000000000 +1000
++++ b/CMakeLists.txt	2021-04-23 07:08:34.377667330 +1000
+@@ -12,8 +12,8 @@
+    set(CMAKE_BUILD_TYPE     RelWithDebInfo)
+ endif("${CMAKE_BUILD_TYPE}" STREQUAL "")
+ set(CMAKE_COLOR_MAKEFILE ON)
+-cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
+-
++cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
++set (CMAKE_CXX_STANDARD 11)
+ add_definitions(-Wall)
+ 
+ include(CMakeOptions.txt)
+--- a/src/ftdi_stream.c	2020-07-08 05:32:55.000000000 +1000
++++ b/src/ftdi_stream.c	2021-04-23 07:08:46.665489358 +1000
+@@ -44,6 +44,18 @@
+ #include <stdio.h>
+ #ifndef _WIN32
+ #include <sys/time.h>
++#else
++#include <chrono>
++
++int gettimeofday(struct timeval* tp, struct timezone* tzp) {
++  namespace sc = std::chrono;
++  sc::system_clock::duration d = sc::system_clock::now().time_since_epoch();
++  sc::seconds s = sc::duration_cast<sc::seconds>(d);
++  tp->tv_sec = s.count();
++  tp->tv_usec = sc::duration_cast<sc::microseconds>(d - s).count();
++
++  return 0;
++}
+ #endif
+ #include <libusb.h>
+ 
