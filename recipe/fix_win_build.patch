@@ -13,7 +13,7 @@
  include(CMakeOptions.txt)
 --- a/src/ftdi_stream.c	2020-07-08 05:32:55.000000000 +1000
 +++ b/src/ftdi_stream.c	2021-04-23 07:08:46.665489358 +1000
-@@ -44,6 +44,39 @@
+@@ -44,6 +44,33 @@
  #include <stdio.h>
  #ifndef _WIN32
  #include <sys/time.h>
@@ -22,12 +22,6 @@
 +#define WIN32_LEAN_AND_MEAN
 +#include <Windows.h>
 +#include <stdint.h> // portable: uint64_t   MSVC: __int64 
-+
-+// MSVC defines this in winsock2.h!?
-+typedef struct timeval {
-+    long tv_sec;
-+    long tv_usec;
-+} timeval;
 +
 +int gettimeofday(struct timeval * tp, struct timezone * tzp)
 +{
