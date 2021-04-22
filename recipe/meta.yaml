@@ -9,10 +9,12 @@ source:
   fn:   libftdi1-{{ version }}.tar.bz2
   url:  https://www.intra2net.com/en/developer/libftdi/download/libftdi1-{{ version }}.tar.bz2
   sha256: '{{ sha256 }}'
+  patches:
+    - use_libusb_pkgconfig.patch
+    - fix_win_build.patch
 
 build:
   number: 0
-  skip: True  # [win]
 
 requirements:
   build:
@@ -26,10 +28,13 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/include/libftdi1/ftdi.h  # [unix]
-    - test -f ${PREFIX}/lib/libftdi1${SHLIB_EXT}  # [unix]
-    - test -f ${PREFIX}/lib/pkgconfig/libftdi1.pc  # [unix]
+    - test -f ${PREFIX}/include/libftdi1/ftdi.h                  # [unix]
+    - test -f ${PREFIX}/lib/libftdi1${SHLIB_EXT}                 # [unix]
+    - test -f ${PREFIX}/lib/pkgconfig/libftdi1.pc                # [unix]
     - test -f ${PREFIX}/lib/cmake/libftdi1/LibFTDI1Config.cmake  # [unix]
+    - if not exist %LIBRARY_INC%\libftdi1\ftdi.h (exit 1)        # [win]
+    - if not exist %LIBRARY_LIB%\ftdi1.lib (exit 1)           # [win]
+    - if not exist %LIBRARY_BIN%\ftdi1.dll (exit 1)           # [win]
 
 about:
   home: https://www.intra2net.com/en/developer/libftdi/
