@@ -9,6 +9,8 @@ source:
   fn:   libftdi1-{{ version }}.tar.bz2
   url:  https://www.intra2net.com/en/developer/libftdi/download/libftdi1-{{ version }}.tar.bz2
   sha256: '{{ sha256 }}'
+    patches:
+      - use_libusb_pkgconfig.patch 
 
 build:
   number: 0
