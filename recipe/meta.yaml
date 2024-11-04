@@ -14,7 +14,7 @@ source:
     - fix_win_build.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
